@@ -1,14 +1,16 @@
+//global variables
 const toDos = ["Study DOM", "Study JavaScript", "Workout"];
-
 const form = document.getElementById("add-todo");
 
+
+//to render input values
 function renderTodos() {
   const container = document.querySelector(".container"); //to target the div class in HTML file
   const ul = document.createElement("ul");
   ul.classList.add("todos");
   container.appendChild(ul); //to include uordered list into the container
 
-  toDos.forEach((Element) => {
+  toDos.forEach((Element) => {//to loop through the array
     const li = document.createElement("li");
     li.classList.add("toDo");
     li.textContent = Element; // Set the text content of each list item
@@ -20,10 +22,12 @@ function renderTodos() {
   });
 }
 
+//to render input values after loading
 window.addEventListener("load", () => {
   renderTodos();
 });
 
+//to add new values to the list
 function addTodo(value) {
   const ul = document.querySelector(".todos");
   const li = document.createElement("li");
@@ -34,13 +38,14 @@ function addTodo(value) {
   li.textContent = value;
   ul.appendChild(li);
 }
-
+//to capture the new value
 form.addEventListener("submit", (Element) => {
   const value = document.querySelector(".toDo-input").value;
   addTodo(value);
   Element.preventDefault();
 });
 
+//to remove an item from the list
 function removeToDo() {
   toDos.filter(todo);
   console.log(todo);
