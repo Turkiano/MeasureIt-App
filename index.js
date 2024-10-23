@@ -1,5 +1,6 @@
 const toDos = ["Study DOM", "Study JavaScript", "Workout"];
-const form = document.getElementById("#add-todo");
+
+const form = document.getElementById("add-todo");
 
 console.log(toDos);
 
@@ -16,6 +17,8 @@ function renderTodos() {
     ul.appendChild(li); // Append each list item to the unordered list
   });
 }
+
+
 window.addEventListener("load", () => {
   renderTodos();
 });
