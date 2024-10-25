@@ -2,7 +2,6 @@
 const toDos = ["Study DOM", "Study JavaScript", "Workout"];
 const form = document.getElementById("add-todo");
 
-
 //to render input values
 function renderTodos() {
   const container = document.querySelector(".container"); //to target the div class in HTML file
@@ -10,13 +9,16 @@ function renderTodos() {
   ul.classList.add("todos");
   container.appendChild(ul); //to include uordered list into the container
 
-  toDos.forEach((Element) => {//to loop through the array
+  toDos.forEach((task) => {
+    //to loop through the array
     const li = document.createElement("li");
     li.classList.add("toDo");
-    li.textContent = Element; // Set the text content of each list item
+    li.textContent = task ; // Set the text content of each list item
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
-    deleteBtn.onclick = removeToDo; //to test the remove function
+    deleteBtn.addEventListener("click", (e)=>{
+      
+    })
     li.appendChild(deleteBtn);
     ul.appendChild(li); // Append each list item to the unordered list
   });
@@ -38,15 +40,17 @@ function addTodo(value) {
   li.textContent = value;
   ul.appendChild(li);
 }
+
+//to remove an item from the list
+function removeToDo() {
+  toDos.filter((todo) => {
+    console.log(todo);
+  });
+}
+
 //to capture the new value
 form.addEventListener("submit", (Element) => {
   const value = document.querySelector(".toDo-input").value;
   addTodo(value);
   Element.preventDefault();
 });
-
-//to remove an item from the list
-function removeToDo() {
-  toDos.filter(todo);
-  console.log(todo);
-}
