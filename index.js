@@ -3,14 +3,14 @@ const toDos = ["Study DOM", "Study JavaScript", "Workout"];
 const form = document.getElementById("add-todo");
 
 //to render input values
-function renderTodos() {
+function renderTodos(array) {
   const container = document.querySelector(".container"); //to target the div class in HTML file
   const ul = document.createElement("ul");
   ul.classList.add("todos");
   container.appendChild(ul); //to include uordered list into the container
 
   //to loop through the array
-  toDos.forEach((task) => {
+  array.forEach((task) => {
     const li = document.createElement("li");
     const span = document.createElement("span"); //1. Declaring the [span] tag
 
@@ -20,8 +20,8 @@ function renderTodos() {
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.addEventListener("click", (e) => {
-      console.log("option 1: " + e.target.parentNode.textContent);
-      console.log("option 2: " + e.target.previousSibling.textContent);
+      const selectedToDo = e.target.previousSibling.textContent;
+      removeToDo(selectedToDo);
     });
     li.appendChild(span); //3. Append span into list
     li.appendChild(deleteBtn);
@@ -47,10 +47,15 @@ function addTodo(value) {
 }
 
 //to remove an item from the list
-function removeToDo() {
-  toDos.filter((todo) => {
-    console.log(todo);
+function removeToDo(selectedToDo) {
+  console.log("The selected Task: " + selectedToDo);
+  const filteredToDo = toDos.filter((todo) => {
+    return todo !== selectedToDo;
   });
+  console.log("The filteredToDo : " + filteredToDo);
+  console.log("The toDos : " + toDos);
+
+  renderTodos(filteredToDo); //to render the list after removing
 }
 
 //to capture the new value
@@ -58,4 +63,9 @@ form.addEventListener("submit", (Element) => {
   const value = document.querySelector(".toDo-input").value;
   addTodo(value);
   Element.preventDefault();
+});
+
+
+window.addEventListener("load", (e) => {
+  renderTodos(toDos);
 });
