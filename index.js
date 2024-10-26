@@ -9,16 +9,21 @@ function renderTodos() {
   ul.classList.add("todos");
   container.appendChild(ul); //to include uordered list into the container
 
+  //to loop through the array
   toDos.forEach((task) => {
-    //to loop through the array
     const li = document.createElement("li");
+    const span = document.createElement("span"); //1. Declaring the [span] tag
+
     li.classList.add("toDo");
-    li.textContent = task ; // Set the text content of each list item
+
+    span.textContent = task; //  2.targeting all the task to be inside the span tag.
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
-    deleteBtn.addEventListener("click", (e)=>{
-      
-    })
+    deleteBtn.addEventListener("click", (e) => {
+      console.log("option 1: " + e.target.parentNode.textContent);
+      console.log("option 2: " + e.target.previousSibling.textContent);
+    });
+    li.appendChild(span); //3. Append span into list
     li.appendChild(deleteBtn);
     ul.appendChild(li); // Append each list item to the unordered list
   });
