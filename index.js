@@ -40,3 +40,33 @@ console.log(message);
 
 const exampleTwo = `Hello, ${userName}`;
 console.log(exampleTwo);
+/**
+ * --------------------------------------------------
+ */
+
+/**
+  Exercise 02.Conditonal Statements:
+  a. Write an if statement to check if a number is greater than 10.
+  b. Write an if-else statement to check if a number is even or odd.
+  c. write nested if statements to check if a student
+   pass or failed an exam, based on their score (passing score >= 60).
+  d. write a switch statement to display a message,
+  based on the day of the week.
+  e. write an ternary operator to determine if a person
+  is eligible to vote based on their age.
+ */
+
+//a. Write an if statement to check if a number is greater than 10.
+const examOne = 100;
+if (age > 10) {
+  console.log("YOu are welcome");
+}
+
+//b. Write an if-else statement to check if a number is even or odd.
+const number = 345;
+if (number % 2 === 0) {
+  console.log("This number " + number + "is even");
+}
+return "This number is odd";
+
+//  c. write nested if statements to check if a student
