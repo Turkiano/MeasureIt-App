@@ -127,4 +127,34 @@ console.log(person);
 delete person.city;
 console.log(person);
 
+/**
+ * /**
+ * ------------Exercise 07.String Manipulation :----------------------------
+ a.Concatenate two strinngs to orm a full name.
+ b. Find the length of a given string.
+ c. Convert a string to uppercase.
+ d. Extract a substring from a string.
+ e. Find the index of a specific character in a string.
+ */
 
+// a.Concatenate two strinngs to orm a full name.
+const firstName = "Turki";
+const lastName = "Saeed";
+console.log("Full Name: " + firstName + lastName);
+
+// b. Find the length of a given string.
+let finding = firstName.length;
+console.log(finding);
+
+// c. Convert a string to uppercase.
+let convertingUpper = firstName.toUpperCase();
+console.log(convertingUpper);
+
+// d. Extract a substring from a string.
+const substring = lastName.substring(0, 5); // Extracts from index 0 to 5 (not inclusive)
+console.log(substring);
+
+// e. Find the index of a specific character in a string.
+const findChar = "N";
+const textIndex = firstName.indexOf(findChar);
+console.log(textIndex);
