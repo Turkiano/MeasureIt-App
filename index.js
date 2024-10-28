@@ -114,22 +114,20 @@ console.log(whatDay(1));
 console.log(whatDay(2));
 console.log(whatDay(6));
 
-
-
 /*
 e. write an ternary operator to determine if a person
   is eligible to vote based on their age.
 */
-const herAge = 28
-age > 18 
-?console.log("yes, you can drive")
-:console.log("come back, when you grow up")
+const herAge = 28;
+age > 18
+  ? console.log("yes, you can drive")
+  : console.log("come back, when you grow up");
 
 //it is the same as the if statement below:
-if(herAge > 18){
-  console.log("yes, you can drive")
+if (herAge > 18) {
+  console.log("yes, you can drive");
 } else {
-  console.log("come back, when you grow up")
+  console.log("come back, when you grow up");
 }
 console.log("------------------------------------------");
 
@@ -144,5 +142,30 @@ e. Use a for loop to find the sum of all numbers in an array.
 
 */
 
+//a. Write a for loop to iterate from 1 to 5 and display each number.
+for (let i = 1; i <= 5; i++) { //increments  i++
+  console.log(i);
+}
 
+//b. Write a while loop to print even numbers between 1 and 10.
+const testing = 2; // Start from the first even numbers
+
+while (testing <= 10)
+{
+    Console.WriteLine(testing);
+    testing += 2; // Increment by 2 to get the next even number
+}
+
+
+//use the modulus operator (%) 
+const testingNum = 1;
+
+while (testingNum <= 10)
+{
+    if (testingNum % 2 == 0) // Check if the testingNum is even
+    {
+        Console.WriteLine(testingNum);
+    }
+    testingNum++; // Increment by 1 to check the next testingNum
+}
 
