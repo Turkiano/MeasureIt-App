@@ -129,7 +129,7 @@ if (herAge > 18) {
 } else {
   console.log("come back, when you grow up");
 }
-console.log("------------------------------------------");
+console.log("-----------------Exercise 03.Loops-------------------------");
 
 /**
  * ------------Exercise 03.Loops:----------------------------
@@ -148,24 +148,17 @@ for (let i = 1; i <= 5; i++) { //increments  i++
 }
 
 //b. Write a while loop to print even numbers between 1 and 10.
-const testing = 2; // Start from the first even numbers
+// const testing = 2; // Start from the first even numbers
 
-while (testing <= 10)
-{
-    Console.WriteLine(testing);
-    testing += 2; // Increment by 2 to get the next even number
-}
+// while (testing <= 10)
+// {
+//   testing += 2; // Increment by 2 to get the next even number
+//   // Console.WriteLine(testing);
+// }
 
 
-//use the modulus operator (%) 
-const testingNum = 1;
 
-while (testingNum <= 10)
-{
-    if (testingNum % 2 == 0) // Check if the testingNum is even
-    {
-        Console.WriteLine(testingNum);
-    }
-    testingNum++; // Increment by 1 to check the next testingNum
-}
+
+
+//c. Write a do-while loop to prompt the user to enter a number until they enter a negative number.
 
