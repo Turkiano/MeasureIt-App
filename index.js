@@ -13,9 +13,14 @@ function renderTodos(array) {
   array.forEach((task) => {
     const li = document.createElement("li");
     const span = document.createElement("span"); //1. Declaring the [span] tag
-    renderDeleteBtn();
-    li.classList.add("toDo");
 
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.addEventListener("click", (e) => {
+      const selectedToDo = e.target.previousSibling.textContent;
+      removeToDo(selectedToDo);
+    });
+    li.classList.add("toDo");
     span.textContent = task; //  2.targeting all the task to be inside the span tag.
 
     li.appendChild(span); //3. Append span into list
@@ -28,16 +33,7 @@ function renderTodos(array) {
 window.addEventListener("load", (e) => {
   renderTodos(toDos);
 });
-//to render deleteBtn, every time we add a task
 
-function renderDeleteBtn() {
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "Delete";
-  deleteBtn.addEventListener("click", (e) => {
-    const selectedToDo = e.target.previousSibling.textContent;
-    removeToDo(selectedToDo);
-  });
-}
 //to add new values to the list
 function addTodo(value) {
   const ul = document.querySelector(".todos");
