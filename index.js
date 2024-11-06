@@ -6,7 +6,7 @@ const ul = document.createElement("ul");
 
 //to render input values
 function renderTodos(array) {
-  const container = document.querySelector(".container"); //to target the div class in HTML file
+  const container = document.querySelector(".taskContainer"); //to target the div class in HTML file
   ul.classList.add("todos");
   container.appendChild(ul); //to include uordered list into the container
 

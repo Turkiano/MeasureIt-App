@@ -1,5 +1,73 @@
-.toDo {
-background-color: blueviolet;
-color: wheat;
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --background: #f3f0ff;
+    --backgroundDark: #e1dafd;
+
+    --secondaryBackground:#e7f3ff;
+    --text:#000000;
+    --purple: #5f33e1;
+    --teal:#90cbff;
 
 }
+
+body{
+    background-color: var(--background);
+    color: var(--text);
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 120px;
+    max-width: 500px;
+    margin: 120px auto 0 auto;
+}
+
+.details{
+    width:100%;
+
+}
+.status-container{
+    padding: 10px;
+    border-radius: 10px; 
+    border: 2px solid var(--purple);
+    display: flex;
+    gap: 50px;
+    justify-content: space-between;
+    width: 100%;
+}
+#progressBar{
+    width: 100%;
+    height: 10px ;
+    background-color: #5f33e1;
+    border-radius: 5px;
+    margin-top: 20px;
+    align-items: center;
+}
+#progress{
+    width: 50%;
+    height: 10px;
+    background-color: var(--backgroundDark);
+}
+
+
+#numbers{
+    width: 80px;
+    height: 80px;
+    background-color:white ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 30px;
+    font-weight: bold;
+    color: #5f33e1;
+}
+

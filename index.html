@@ -4,20 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <title>Document</title>
+    <title>To-Do App</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <h1 class="main-title">To Do App</h1>
-    <form id="add-todo">
-      <input
-        class="toDo-input"
-        type="text"
-        placeholder="write your to-do task"
-      />
-      <button id="submit-btn" type="submit">ADD TODO</button>
-    </form>
-    <div class="container"></div>
+    <div class="container">
+      <div class="status-container">
+        <div>
+          <h1 class="main-title">To Do App</h1>
+          <p>Keep it up!</p>
+
+          <div id="progressBar">
+            <div id="progress"></div>
+          </div>
+        </div>
+        <div class="stats-numbers">
+          <p id="numbers">2/3</p>
+        </div>
+      </div>
+      <form id="add-todo">
+        <input
+          class="toDo-input"
+          type="text"
+          placeholder="write your to-do task"
+        />
+        <button id="submit-btn" type="submit">ADD TODO</button>
+      </form>
+      <div class="taskContainer"></div>
+    </div>
     <script src="index.js"></script>
   </body>
 </html>
