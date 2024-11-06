@@ -1,5 +1,6 @@
 //global variables
 let toDos = ["Study DOM", "Study JavaScript", "Workout"];
+
 const form = document.getElementById("add-todo");
 const ul = document.createElement("ul");
 
@@ -13,13 +14,14 @@ function renderTodos(array) {
   array.forEach((task) => {
     const li = document.createElement("li");
     const span = document.createElement("span"); //1. Declaring the [span] tag
-
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
+
     deleteBtn.addEventListener("click", (e) => {
       const selectedToDo = e.target.previousSibling.textContent;
       removeToDo(selectedToDo);
     });
+    
     li.classList.add("toDo");
     span.textContent = task; //  2.targeting all the task to be inside the span tag.
 
@@ -46,11 +48,9 @@ function addTodo(value) {
     removeToDo(selectedToDo);
   });
 
-  toDos.push(value);
-  console.log(toDos); //to test the items in the main Array
-
+  toDos.push(value); //to add the new value to the main array
+  li.textContent = value;//to show the new tasks in the <li> tag
   li.classList.add("toDo");
-  li.textContent = value;
   li.appendChild(deleteBtn);
   ul.appendChild(li);
 }
