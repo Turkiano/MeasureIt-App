@@ -103,6 +103,7 @@ function createEditButton() {
   const editBtn = document.createElement("button");
   const editImg = document.createElement("img");
   editBtn.classList.add("editBtn");
+
   editImg.src = "img/edit_icon.png";
   editImg.alt = "Delete";
   editImg.width = 20;
@@ -111,10 +112,9 @@ function createEditButton() {
 
   // Attach event listener to the edit button
   editBtn.addEventListener("click", (e) => {
-    const selectedToDo = e.target
-      .closest("li")
-      .querySelector("span").textContent;
-    // editToDo(selectedToDo, li);
+    const li = e.target.closest("li");
+    const span = li.querySelector("span");
+    editToDo(span);
   });
 
   return editBtn;
@@ -134,4 +134,46 @@ function createCheckbox() {
   });
 
   return checkbox;
+}
+
+// Function to edit a task
+function editToDo(span) {
+  const originalText = span.textContent;
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = originalText;
+
+  span.replaceWith(input);
+  input.focus();
+
+  // Listen for 'Enter' key to save the edit
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      saveEdit(input, span);
+    }
+  });
+
+  // Alternatively, handle blur event to save the edit
+  input.addEventListener("blur", () => {
+    saveEdit(input, span);
+  });
+}
+
+// Save the edited task
+function saveEdit(input, span) {
+  const newValue = input.value.trim();
+
+  if (newValue) {
+    span.textContent = newValue;
+    input.replaceWith(span);
+
+    // Update the main array
+    const index = toDos.indexOf(input.defaultValue);
+    if (index > -1) {
+      toDos[index] = newValue;
+    }
+  } else {
+    // If empty, revert back to original text
+    input.replaceWith(span);
+  }
 }
