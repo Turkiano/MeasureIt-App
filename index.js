@@ -21,7 +21,7 @@ function renderTodos(array) {
 
     const deleteBtn = createDeleteButton();
     const editBtn = createEditButton();
-    const checkbox = createChickbox();
+    const checkbox = createCheckbox();
 
     li.appendChild(checkbox);
     li.appendChild(span); //3. Append span into list
@@ -40,15 +40,18 @@ window.addEventListener("load", (e) => {
 function addTodo(value) {
   const ul = document.querySelector(".todos");
   const li = document.createElement("li");
+  const span = document.createElement("span"); //1. Declaring the [span] tag
 
   toDos.push(value); //to add the new value to the main array
-  li.textContent = value; //to show the new tasks in the <li> tag
+  span.textContent = value; //to show the new tasks in the <li> tag
   li.classList.add("toDo");
 
   const deleteBtn = createDeleteButton();
   const editBtn = createEditButton();
-  const checkbox = createChickbox();
+  const checkbox = createCheckbox();
+
   li.appendChild(checkbox);
+  li.appendChild(span); //3. Append span into list
   li.appendChild(editBtn);
   li.appendChild(deleteBtn);
   ul.appendChild(li);
@@ -111,13 +114,13 @@ function createEditButton() {
     const selectedToDo = e.target
       .closest("li")
       .querySelector("span").textContent;
-    removeToDo(selectedToDo);
+    // editToDo(selectedToDo, li);
   });
 
   return editBtn;
 }
 
-function createChickbox() {
+function createCheckbox() {
   const checkbox = document.createElement("input");
   checkbox.type = "checkbox";
   checkbox.classList.add("checkbox");
