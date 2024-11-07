@@ -14,28 +14,18 @@ function renderTodos(array) {
   array.forEach((task) => {
     const li = document.createElement("li");
     const span = document.createElement("span"); //1. Declaring the [span] tag
-    const deleteBtn = document.createElement("button");
-    const deleteImg = document.createElement("img");
-
-    deleteImg.src = "img/delete_icon.png";
-    deleteImg.alt = "Delete";
-    deleteImg.width = 20;
-    deleteImg.height = 20;
-    deleteBtn.appendChild(deleteImg); // Append deleteImg to deleteBtn
-
-    const editBtn = document.createElement("edButton");
-
-    deleteBtn.addEventListener("click", (e) => {
-      const selectedToDo = e.target.previousSibling.textContent;
-      removeToDo(selectedToDo);
-    });
+    // const editBtn = document.createElement("edButton");
 
     li.classList.add("toDo");
     span.textContent = task; //  2.targeting all the task to be inside the span tag.
 
-    li.appendChild(span); //3. Append span into list
-    deleteBtn.appendChild(deleteImg);
+    const deleteBtn = createDeleteButton();
+    const editBtn = createEditButton();
+    const checkbox = createChickbox();
 
+    li.appendChild(checkbox);
+    li.appendChild(span); //3. Append span into list
+    li.appendChild(editBtn);
     li.appendChild(deleteBtn);
     ul.appendChild(li); // Append each list item to the unordered list
   });
@@ -50,24 +40,16 @@ window.addEventListener("load", (e) => {
 function addTodo(value) {
   const ul = document.querySelector(".todos");
   const li = document.createElement("li");
-  const deleteBtn = document.createElement("button");
-  const deleteImg = document.createElement("img");
-
-  deleteImg.src = "img/delete_icon.png";
-  deleteImg.alt = "Delete";
-  deleteImg.width = 20;
-  deleteImg.height = 20;
-  deleteBtn.appendChild(deleteImg); // Append deleteImg to deleteBtn
-
-  deleteBtn.addEventListener("click", (e) => {
-    const selectedToDo = e.target.previousSibling.textContent;
-    removeToDo(selectedToDo);
-  });
 
   toDos.push(value); //to add the new value to the main array
   li.textContent = value; //to show the new tasks in the <li> tag
   li.classList.add("toDo");
-  deleteBtn.appendChild(deleteImg);
+
+  const deleteBtn = createDeleteButton();
+  const editBtn = createEditButton();
+  const checkbox = createChickbox();
+  li.appendChild(checkbox);
+  li.appendChild(editBtn);
   li.appendChild(deleteBtn);
   ul.appendChild(li);
 }
@@ -91,3 +73,62 @@ form.addEventListener("submit", (Element) => {
   addTodo(value);
   Element.preventDefault();
 });
+
+function createDeleteButton() {
+  const deleteBtn = document.createElement("button");
+  const deleteImg = document.createElement("img");
+  deleteBtn.classList.add("deleteBtn");
+
+  deleteImg.src = "img/delete_icon.png";
+  deleteImg.alt = "Delete";
+  deleteImg.width = 20;
+  deleteImg.height = 20;
+  deleteBtn.appendChild(deleteImg);
+
+  // Attach event listener to the delete button
+  deleteBtn.addEventListener("click", (e) => {
+    const selectedToDo = e.target
+      .closest("li")
+      .querySelector("span").textContent;
+    removeToDo(selectedToDo);
+  });
+
+  return deleteBtn;
+}
+
+function createEditButton() {
+  const editBtn = document.createElement("button");
+  const editImg = document.createElement("img");
+  editBtn.classList.add("editBtn");
+  editImg.src = "img/edit_icon.png";
+  editImg.alt = "Delete";
+  editImg.width = 20;
+  editImg.height = 20;
+  editBtn.appendChild(editImg);
+
+  // Attach event listener to the edit button
+  editBtn.addEventListener("click", (e) => {
+    const selectedToDo = e.target
+      .closest("li")
+      .querySelector("span").textContent;
+    removeToDo(selectedToDo);
+  });
+
+  return editBtn;
+}
+
+function createChickbox() {
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.classList.add("checkbox");
+
+  checkbox.addEventListener("change", (e) => {
+    if (checkbox.checked) {
+      e.target.closet("li").classList.add("completed");
+    } else {
+      e.target.closet("li").classList.remove("completed");
+    }
+  });
+
+  return checkbox;
+}
