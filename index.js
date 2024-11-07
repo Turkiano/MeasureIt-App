@@ -15,17 +15,27 @@ function renderTodos(array) {
     const li = document.createElement("li");
     const span = document.createElement("span"); //1. Declaring the [span] tag
     const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
+    const deleteImg = document.createElement("img");
+
+    deleteImg.src = "img/delete_icon.png";
+    deleteImg.alt = "Delete";
+    deleteImg.width = 20;
+    deleteImg.height = 20;
+    deleteBtn.appendChild(deleteImg); // Append deleteImg to deleteBtn
+
+    const editBtn = document.createElement("edButton");
 
     deleteBtn.addEventListener("click", (e) => {
       const selectedToDo = e.target.previousSibling.textContent;
       removeToDo(selectedToDo);
     });
-    
+
     li.classList.add("toDo");
     span.textContent = task; //  2.targeting all the task to be inside the span tag.
 
     li.appendChild(span); //3. Append span into list
+    deleteBtn.appendChild(deleteImg);
+
     li.appendChild(deleteBtn);
     ul.appendChild(li); // Append each list item to the unordered list
   });
@@ -41,16 +51,23 @@ function addTodo(value) {
   const ul = document.querySelector(".todos");
   const li = document.createElement("li");
   const deleteBtn = document.createElement("button");
+  const deleteImg = document.createElement("img");
 
-  deleteBtn.textContent = "Delete";
+  deleteImg.src = "img/delete_icon.png";
+  deleteImg.alt = "Delete";
+  deleteImg.width = 20;
+  deleteImg.height = 20;
+  deleteBtn.appendChild(deleteImg); // Append deleteImg to deleteBtn
+
   deleteBtn.addEventListener("click", (e) => {
     const selectedToDo = e.target.previousSibling.textContent;
     removeToDo(selectedToDo);
   });
 
   toDos.push(value); //to add the new value to the main array
-  li.textContent = value;//to show the new tasks in the <li> tag
+  li.textContent = value; //to show the new tasks in the <li> tag
   li.classList.add("toDo");
+  deleteBtn.appendChild(deleteImg);
   li.appendChild(deleteBtn);
   ul.appendChild(li);
 }
