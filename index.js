@@ -18,23 +18,22 @@ function renderTodos(array) {
     const span = document.createElement("span"); //1. Declaring the [span] tag
     span.textContent = task; //  2.targeting all the task to be inside the span tag.
 
-    const buttonGroup = document.createElement("div");
-    buttonGroup.classList.add("button-group");
+    const checkbox = createCheckbox();
     const taskLabel = document.createElement("div");
     taskLabel.classList.add("taskLable");
+    taskLabel.appendChild(checkbox);
+    taskLabel.appendChild(span);
+
+    const buttonGroup = document.createElement("div");
+    buttonGroup.classList.add("button-group");
     const deleteBtn = createDeleteButton();
     const editBtn = createEditButton();
     buttonGroup.appendChild(editBtn);
     buttonGroup.appendChild(deleteBtn);
-    taskLabel.appendChild(span);
-    taskLabel.appendChild(checkbox);
 
-    const checkbox = createCheckbox();
     //3. Append span into list
-    // li.appendChild(span);
-    // li.appendChild(checkbox);
+    li.appendChild(taskLabel);
     li.appendChild(buttonGroup);
-    li.appendChild(taskLabel)
 
     ul.appendChild(li); // Append each list item to the unordered list
   });
@@ -55,14 +54,24 @@ function addTodo(value) {
   span.textContent = value; //to show the new tasks in the <li> tag
   li.classList.add("task");
 
+  const checkbox = createCheckbox();
+  const taskLabel = document.createElement("div");
+
+  const buttonGroup = document.createElement("div");
+  buttonGroup.classList.add("button-group");
   const deleteBtn = createDeleteButton();
   const editBtn = createEditButton();
-  const checkbox = createCheckbox();
+  buttonGroup.appendChild(editBtn);
+  buttonGroup.appendChild(deleteBtn);
 
-  li.appendChild(checkbox);
-  li.appendChild(span); //3. Append span into list
-  li.appendChild(editBtn);
-  li.appendChild(deleteBtn);
+  taskLabel.classList.add("taskLable");
+  taskLabel.appendChild(checkbox);
+  taskLabel.appendChild(span);
+
+  li.appendChild(taskLabel);
+  li.appendChild(buttonGroup);
+
+
   ul.appendChild(li);
 }
 
@@ -136,9 +145,9 @@ function createCheckbox() {
 
   checkbox.addEventListener("change", (e) => {
     if (checkbox.checked) {
-      e.target.closet("li").classList.add("completed");
+      e.target.closest("li").classList.add("completed");
     } else {
-      e.target.closet("li").classList.remove("completed");
+      e.target.closest("li").classList.remove("completed");
     }
   });
 

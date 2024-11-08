@@ -172,8 +172,9 @@ button {
     justify-content: center;
 }
 
-.task .taskLabel{
+.taskLabel {
     display: flex;
-    gap: 5px;
-}
+    align-items: center;
+    gap: 50px; /* Space between checkbox and text */
+  }
 
