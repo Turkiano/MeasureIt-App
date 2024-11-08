@@ -7,7 +7,7 @@ const ul = document.createElement("ul");
 //to render input values
 function renderTodos(array) {
   const container = document.querySelector(".taskContainer"); //to target the div class in HTML file
-  ul.classList.add("todos");
+  ul.classList.add("taskList");
   container.appendChild(ul); //to include uordered list into the container
 
   //to loop through the array
@@ -16,7 +16,7 @@ function renderTodos(array) {
     const span = document.createElement("span"); //1. Declaring the [span] tag
     // const editBtn = document.createElement("edButton");
 
-    li.classList.add("toDo");
+    li.classList.add("task");
     span.textContent = task; //  2.targeting all the task to be inside the span tag.
 
     const deleteBtn = createDeleteButton();
@@ -38,13 +38,13 @@ window.addEventListener("load", (e) => {
 
 //to add new values to the list
 function addTodo(value) {
-  const ul = document.querySelector(".todos");
+  const ul = document.querySelector(".taskList");
   const li = document.createElement("li");
   const span = document.createElement("span"); //1. Declaring the [span] tag
 
   toDos.push(value); //to add the new value to the main array
   span.textContent = value; //to show the new tasks in the <li> tag
-  li.classList.add("toDo");
+  li.classList.add("task");
 
   const deleteBtn = createDeleteButton();
   const editBtn = createEditButton();
