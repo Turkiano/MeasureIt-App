@@ -13,20 +13,29 @@ function renderTodos(array) {
   //to loop through the array
   array.forEach((task) => {
     const li = document.createElement("li");
-    const span = document.createElement("span"); //1. Declaring the [span] tag
-    // const editBtn = document.createElement("edButton");
-
     li.classList.add("task");
+
+    const span = document.createElement("span"); //1. Declaring the [span] tag
     span.textContent = task; //  2.targeting all the task to be inside the span tag.
 
+    const buttonGroup = document.createElement("div");
+    buttonGroup.classList.add("button-group");
+    const taskLabel = document.createElement("div");
+    taskLabel.classList.add("taskLable");
     const deleteBtn = createDeleteButton();
     const editBtn = createEditButton();
-    const checkbox = createCheckbox();
+    buttonGroup.appendChild(editBtn);
+    buttonGroup.appendChild(deleteBtn);
+    taskLabel.appendChild(span);
+    taskLabel.appendChild(checkbox);
 
-    li.appendChild(checkbox);
-    li.appendChild(span); //3. Append span into list
-    li.appendChild(editBtn);
-    li.appendChild(deleteBtn);
+    const checkbox = createCheckbox();
+    //3. Append span into list
+    // li.appendChild(span);
+    // li.appendChild(checkbox);
+    li.appendChild(buttonGroup);
+    li.appendChild(taskLabel)
+
     ul.appendChild(li); // Append each list item to the unordered list
   });
 }

@@ -142,20 +142,38 @@ button {
 
 }
 
-.task{
+.task {
     padding: 10px;
     width: 100%;
     list-style: none;
     background-color: var(--backgroundDark);
     border-radius: 10px;
     margin: 5px;
-
-
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.task .button-group {
+    display: flex;
+    gap: 5px; /* Add gap between buttons */
 }
 
 .taskList img {
     width: 13px;
     height: 13px;
     
+}
+
+.editBtn, .deleteBtn {
+    width: 27px;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task .taskLabel{
+    display: flex;
+    gap: 5px;
 }
 
