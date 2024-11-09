@@ -1,13 +1,29 @@
 //global variables
-let toDos = ["Study DOM", "Study JavaScript", "Workout"];
+let toDos = [];
 
 const form = document.getElementById("add-todo");
 const ul = document.createElement("ul");
+
+//Save in Local storage
+const saveTasks = () => {
+  localStorage.setItem("tasks", JSON.stringify(toDos));
+};
+
+// Load saved tasks from local storage on page load
+window.addEventListener("load", (e) => {
+  // Retrieve tasks from local storage, or initialize with an empty array if no tasks are saved
+  const savedTasks = localStorage.getItem("tasks");
+  toDos = savedTasks ? JSON.parse(savedTasks) : [];
+
+  // Render the tasks after loading from local storage
+  renderTodos(toDos);
+});
 
 //to render input values
 function renderTodos(array) {
   const container = document.querySelector(".taskContainer"); //to target the div class in HTML file
   ul.classList.add("taskList");
+  ul.innerHTML = ""; // Clear the existing list to prevent duplication
   container.appendChild(ul); //to include uordered list into the container
 
   //to loop through the array
@@ -38,11 +54,13 @@ function renderTodos(array) {
     ul.appendChild(li); // Append each list item to the unordered list
   });
   updateStats(); // Initial update to stats
+  saveTasks();
 }
 
 //to render taks, every time we load
 window.addEventListener("load", (e) => {
   renderTodos(toDos);
+  saveTasks();
 });
 
 //to add new values to the list
@@ -74,6 +92,7 @@ function addTodo(value) {
 
   ul.appendChild(li);
   updateStats(); // Update stats when a new task is added
+  saveTasks();
 }
 
 //to remove an item from the list
@@ -88,6 +107,7 @@ function removeToDo(selectedToDo) {
 
   renderTodos(filteredToDo); //to render the list after removing
   updateStats(); // Update stats when a task is removed
+  saveTasks();
 }
 
 //to capture the new value, when submitting
@@ -202,7 +222,8 @@ function saveEdit(input, span) {
 const updateStats = () => {
   const totalTasks = toDos.length;
   const completeTask = document.querySelectorAll(".checkbox:checked").length;
-  const progressPrecentage = totalTasks === 0 ? 0 : completeTask / totalTasks;
+  const progressPrecentage =
+    totalTasks === 0 ? 0 : Math.round((completeTask / totalTasks) * 100);
   console.log(progressPrecentage);
 
   //Update progress bar width
