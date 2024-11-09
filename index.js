@@ -37,6 +37,7 @@ function renderTodos(array) {
 
     ul.appendChild(li); // Append each list item to the unordered list
   });
+  updateStats(); // Initial update to stats
 }
 
 //to render taks, every time we load
@@ -71,8 +72,8 @@ function addTodo(value) {
   li.appendChild(taskLabel);
   li.appendChild(buttonGroup);
 
-
   ul.appendChild(li);
+  updateStats(); // Update stats when a new task is added
 }
 
 //to remove an item from the list
@@ -86,6 +87,7 @@ function removeToDo(selectedToDo) {
   toDos = filteredToDo; //to updated the tasks
 
   renderTodos(filteredToDo); //to render the list after removing
+  updateStats(); // Update stats when a task is removed
 }
 
 //to capture the new value, when submitting
@@ -149,6 +151,7 @@ function createCheckbox() {
     } else {
       e.target.closest("li").classList.remove("completed");
     }
+    updateStats(); // Update stats when a task is removed
   });
 
   return checkbox;
@@ -195,3 +198,21 @@ function saveEdit(input, span) {
     input.replaceWith(span);
   }
 }
+
+const updateStats = () => {
+  const totalTasks = toDos.length;
+  const completeTask = document.querySelectorAll(".checkbox:checked").length;
+  const progressPrecentage = totalTasks === 0 ? 0 : completeTask / totalTasks;
+  console.log(progressPrecentage);
+
+  //Update progress bar width
+  document.getElementById("progress").style.width = `${progressPrecentage}%`;
+
+  //Update percentage and tasks count text
+  document.getElementById("numbers").textContent = `${Math.round(
+    progressPrecentage
+  )}%`;
+  document.querySelector(
+    ".tasksNo"
+  ).textContent = `${completeTask}/${totalTasks}`;
+};
