@@ -1,16 +1,14 @@
-class employee {
-  baseSalary = 30000;
- overtime = 10;
- rate = 20;
 
- getWage(baseSalary, overtime, rate) {
-  return baseSalary + (overtime * rate);
-  
+
+
+class person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 }
-}
 
+const person1 = new person("Turkiano", 38);
+const person2 = new person("Turkiano", 38);
 
-const worker1 = new employee()
-console.log(worker1.baseSalary)
-console.log(worker1.getWage(5000, 10, 20))
-
+console.log(`the name is: ` + person1.name);
