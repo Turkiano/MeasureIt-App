@@ -1,14 +1,26 @@
+function Person(name, age) {
+  let _name = name; // Private variable
+  let _age = age; // Private variable
 
+  // Public methods
+  this.getName = function () {
+    return _name;
+  };
 
+  this.setName = function (name) {
+    _name = name;
+  };
 
-class person {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
+  this.getAge = function () {
+    return _age;
+  };
+
+  this.setAge = function (age) {
+    if (age >= 0) _age = age;
+  };
 }
 
-const person1 = new person("Turkiano", 38);
-const person2 = new person("Turkiano", 38);
-
-console.log(`the name is: ` + person1.name);
+const person = new Person("Kahlid", 30);
+console.log(person.getName()); // John
+person.setName("Turkiano");
+console.log(person.getName()); // Turkiano
