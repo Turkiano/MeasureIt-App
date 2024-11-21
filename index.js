@@ -1,25 +1,31 @@
-class Person {
-  #name; //private field
-  #age;
 
-  constructor(name, age) {
-    this.#name = name;
-    this.#age = age;
-  }
+let theList = [1,2,3];
+let newList = 4;
+let updatedList = addItemToArray(theList, newList);//invoking 1st function
 
-  //public methods
-  getName() {return this.#name;}
+console.log("This is for testing: " + updatedList);
+renderList(updatedList); //invoking 2nd function
 
-  setName(name) {this.#name = name;}
 
-  getAge() {return this.#age;}
-
-  setAge(age) {if (age >= 0) this.#age = age;}
+//1.add items to the list
+function addItemToArray(arr, item) {
+  arr.push(item);
+  return arr;
 }
 
-//new objects
-const personOne = new Person("Khalid");
-console.log("Ex 01: " + personOne.getName());
+//2.render the List
+function renderList(arrai) {
+  arrai.forEach((items) => {
+    console.log("rendering Item: " + items);
+  });
+}
 
-personOne.setName("Turkiano");
-console.log("Ex 02: " + personOne.getName());
+//3. Deleting items from the list
+function removeItemFromArray(array, index){
+if (index >=0 && index < array.length){
+  array.splice(index, 1)
+}
+else {
+  console.log("invalid index: " + index)
+}
+}
