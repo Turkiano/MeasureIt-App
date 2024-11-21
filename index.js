@@ -45,3 +45,5 @@ function editItemInArray(array, index) {
 function countItemsInArray(array) {
   return array.length;
 }
+
+//done
