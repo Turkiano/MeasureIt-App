@@ -12,7 +12,7 @@ class Person {
 
   getDetails() {
     //methods as a property
-    return `${this.name} ${this.age} ${this.address}`;
+    return `${this.name} ${this.age} Address: ${this.address.getDetails()}`;
   }
 }
 
@@ -20,6 +20,9 @@ class Address {
   constructor(streetName, zipCode) {
     this.streetName = streetName;
     this.zipCode = zipCode;
+  }
+  getDetails(){
+    return `${this.streetName} ${this.zipCode}`
   }
 }
 
