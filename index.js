@@ -1,47 +1,33 @@
-let theList = [1, 2, 3];
-let newItem = 4;
-let updatedList = addItemToArray(theList, newItem); //invoking 1st function
+/**
+ * we have two objects (Person, and Address),
+ * and each object has properties inside a constructor
+ */
 
-console.log("01.testing Add function: " + updatedList);
-renderList(updatedList); //invoking 2nd function
+class Person {
+  constructor(name, age, address) {
+    this.name = name;
+    this.age = age;
+    this.address = address;
+  }
 
-removeItemFromArray(updatedList, 2); //invoking 3rd function
-console.log("03.testing removed function: " + updatedList);
-
-editItemInArray(updatedList, 5); //invoking 4th function
-console.log("04.testing Edit function: " + updatedList);
-
-countItemsInArray(updatedList);
-console.log("05.testing Counter function: " + updatedList);
-
-//1.add function
-function addItemToArray(arr, item) {
-  arr.push(item);
-  return arr;
-}
-
-//2.render function
-function renderList(arrai) {
-  arrai.forEach((items) => {
-    console.log("02.rendering Item: " + items);
-  });
-}
-
-//3. Delete function
-function removeItemFromArray(array, index) {
-  if (index >= 0 && index < array.length) {
-    array.splice(index, 1);
-  } else {
-    console.log("invalid index: " + index);
+  getDetails() {
+    //methods as a property
+    return `${this.name} ${this.age} Adress: ${this.address.getDetails()}`;
   }
 }
 
-//04. Editing function
-function editItemInArray(array, index) {
-  array.push(index);
+class Address {
+  constructor(streetName, zipCode) {
+    this.streetName = streetName;
+    this.zipCode = zipCode;
+  }
+  getDetails() {
+    //methods as a property
+    return `${this.streetName} ${this.zipCode}`;
+  }
 }
 
-//05. Counter function
-function countItemsInArray(array) {
-  return array.length;
-}
+const address01 = new Address("st.street", 2345);
+const person01 =  new Person("Turkiano", 38, address01)
+
+console.log(person01.getDetails())
