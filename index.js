@@ -1,24 +1,47 @@
-const toDos = ["Study DOM", "Study JavaScript", "Workout"];
-const container = document.querySelector(".container"); //to target the div class in HTML file
-const ul = document.createElement("ul");
-container.appendChild(ul); //to include uordered list into the container
+let theList = [1, 2, 3];
+let newItem = 4;
+let updatedList = addItemToArray(theList, newItem); //invoking 1st function
 
-toDos.forEach((Element) => {
-  const li = document.createElement("li");
-  li.classList.add("toDo");
-  li.textContent = Element; // Set the text content of each list item
-  ul.appendChild(li); // Append each list item to the unordered list
-});
+console.log("01.testing Add function: " + updatedList);
+renderList(updatedList); //invoking 2nd function
 
-const addButton = document.querySelector("#submit-btn");
-addButton.addEventListener("click", function (e) {
-  e.preventDefault();
-  const newToDoInput = document.querySelector(".toDo-input");
-  const newToDoValue = newToDoInput.value.trim(); //// Get the input value and trim any excess spaces
-  console.log("button input: " + newToDoValue);
+removeItemFromArray(updatedList, 2); //invoking 3rd function
+console.log("03.testing removed function: " + updatedList);
 
-  const li = document.createElement("li");
-  li.classList.add("toDo");
-  li.textContent = newToDoValue;
-  ul.appendChild(li);
-});
+editItemInArray(updatedList, 5); //invoking 4th function
+console.log("04.testing Edit function: " + updatedList);
+
+countItemsInArray(updatedList);
+console.log("05.testing Counter function: " + updatedList);
+
+//1.add function
+function addItemToArray(arr, item) {
+  arr.push(item);
+  return arr;
+}
+
+//2.render function
+function renderList(arrai) {
+  arrai.forEach((items) => {
+    console.log("02.rendering Item: " + items);
+  });
+}
+
+//3. Delete function
+function removeItemFromArray(array, index) {
+  if (index >= 0 && index < array.length) {
+    array.splice(index, 1);
+  } else {
+    console.log("invalid index: " + index);
+  }
+}
+
+//04. Editing function
+function editItemInArray(array, index) {
+  array.push(index);
+}
+
+//05. Counter function
+function countItemsInArray(array) {
+  return array.length;
+}
