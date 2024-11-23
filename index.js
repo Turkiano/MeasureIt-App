@@ -1,33 +1,21 @@
-/**
- * we have two objects (Person, and Address),
- * and each object has properties inside a constructor
- */
-
-class Person {
-  constructor(name, age, address) {
-    this.name = name;
-    this.age = age;
-    this.address = address;
+class Library {
+  constructor(name){
+    this.name = name
+    this.bookList = []
   }
-
-  getDetails() {
-    //methods as a property
-    return `${this.name} ${this.age} Adress: ${this.address.getDetails()}`;
+  addBook(book){ //method to create
+    this.bookList.push(book)
+  }
+  
+  getBooks(){//method to Read
+    console.log(`${this.bookList}`);
   }
 }
 
-class Address {
-  constructor(streetName, zipCode) {
-    this.streetName = streetName;
-    this.zipCode = zipCode;
-  }
-  getDetails() {
-    //methods as a property
-    return `${this.streetName} ${this.zipCode}`;
-  }
-}
 
-const address01 = new Address("st.street", 2345);
-const person01 =  new Person("Turkiano", 38, address01)
+const Library01 = new Library("Kings College Library")
+Library01.addBook("Comedy stories")
+Library01.addBook("Math01")
+Library01.addBook("Gym Guidence")
+Library01.getBooks()
 
-console.log(person01.getDetails())
