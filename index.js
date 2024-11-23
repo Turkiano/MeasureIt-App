@@ -1,21 +1,28 @@
-class Library {
-  constructor(name){
-    this.name = name
-    this.bookList = []
+class Animal {
+  constructor(name) {
+    this.name = name;
   }
-  addBook(book){ //method to create
-    this.bookList.push(book)
-  }
-  
-  getBooks(){//method to Read
-    console.log(`${this.bookList}`);
+  speak() {
+    return `${this.name} makes a sound.`;
   }
 }
 
 
-const Library01 = new Library("Kings College Library")
-Library01.addBook("Comedy stories")
-Library01.addBook("Math01")
-Library01.addBook("Gym Guidence")
-Library01.getBooks()
+class Dog extends Animal{
+  speak(){
+    return `${this.name} barks.`
+  }
+}
 
+class Cat extends Animal{
+  speak(){
+    return `${this.name} mewos`
+  }
+}
+
+
+const dog01 = new Dog("Max");
+console.log(dog01.speak())// Max barks.
+
+const cat01 = new Cat("Becatcho");
+console.log(cat01.speak()) // Becatcho meows.
