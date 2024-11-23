@@ -1,26 +1,29 @@
-function Person(name, age) {
-  let _name = name; // Private variable
-  let _age = age; // Private variable
+/**
+ * we have two objects (Person, and Address),
+ * and each object has properties inside a constructor
+ */
 
-  // Public methods
-  this.getName = function () {
-    return _name;
-  };
+class Person {
+  constructor(name, age, address) {
+    this.name = name;
+    this.age = age;
+    this.address = address;
+  }
 
-  this.setName = function (name) {
-    _name = name;
-  };
-
-  this.getAge = function () {
-    return _age;
-  };
-
-  this.setAge = function (age) {
-    if (age >= 0) _age = age;
-  };
+  getDetails() {
+    //methods as a property
+    return `${this.name} ${this.age} ${this.address}`;
+  }
 }
 
-const person = new Person("Kahlid", 30);
-console.log(person.getName()); // John
-person.setName("Turkiano");
-console.log(person.getName()); // Turkiano
+class Address {
+  constructor(streetName, zipCode) {
+    this.streetName = streetName;
+    this.zipCode = zipCode;
+  }
+}
+
+const address01 = new Address("st.street", 2345);
+const person01 =  new Person("Turkiano", 38, address01)
+
+console.log(person01.getDetails())
